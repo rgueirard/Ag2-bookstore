@@ -1,0 +1,22 @@
+<table>
+  <thead>
+  <tr>
+    <th></th>
+    <th>Titre</th>
+    <th>Auteur</th>
+    <th>Note</th>
+    <th>Prix</th>
+  </tr>
+  </thead>
+  <!--<tbody *ngIf="books$ | async as books">-->
+  <!--<tr *ngFor="let book of books">-->
+  <tr *ngFor="let book of books$ | async">
+    <td><img [src]="book.image"></td>
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.rating || ''}}</td>
+    <td class="right">{{book.price | currency:'EUR'}}</td>
+  </tr>
+  </tbody>
+</table>
+<!--<app-catalog-book></app-catalog-book>-->
