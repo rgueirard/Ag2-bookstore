@@ -3,8 +3,9 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import {CatalogModule} from "./catalog/catalog.module";
-import {ServicesModule} from "./core/services/services.module";
+import { CatalogModule } from "./catalog/catalog.module";
+import { ServicesModule } from "./core/services/services.module";
+import { AppRoutingModule } from "./app-routing.module";
 
 
 @NgModule({
@@ -14,7 +15,9 @@ import {ServicesModule} from "./core/services/services.module";
   imports: [
     BrowserModule,
     CatalogModule,
-    ServicesModule
+    ServicesModule,
+    // rooting module à la fin
+    AppRoutingModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'fr-FR'}
