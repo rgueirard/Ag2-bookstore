@@ -4,7 +4,7 @@ import {RouterModule, Routes} from "@angular/router";
 const routes: Routes = [
   // { path: 'cart', component: CartRootComponent, children: [] },
   { path: '', redirectTo: 'catalog', pathMatch: 'full'},
-  { path: '**', redirectTo: 'catalog', pathMatch: 'full'}
+  // { path: '**', redirectTo: 'catalog', pathMatch: 'full'}
 ];
 
 @NgModule({

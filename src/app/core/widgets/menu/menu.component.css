@@ -1,0 +1,16 @@
+a {
+  color: darkgrey;
+  border-bottom: 2px solid grey;
+  text-decoration: none;
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+a.active-link {
+  color: #2e95ff;
+  border-bottom: 4px solid #2e95ff
+}
+

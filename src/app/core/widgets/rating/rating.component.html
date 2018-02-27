@@ -1,0 +1,7 @@
+<span (mouseleave)="onLeave()"
+  ><span class="clickable" *ngFor="let star of stars; index as i "
+      (mouseenter)="onEnter(i)"
+    ><span *ngIf="star" (click)="updateRating(i)">★</span
+    ><span *ngIf="!star" (click)="updateRating(i)">☆</span
+></span
+></span>

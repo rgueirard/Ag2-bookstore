@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { CatalogModule } from "./catalog/catalog.module";
 import { ServicesModule } from "./core/services/services.module";
 import { AppRoutingModule } from "./app-routing.module";
+import { WidgetsModule} from "./core/widgets/widgets.module";
+import { CartModule } from "./cart/cart.module";
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { AppRoutingModule } from "./app-routing.module";
   imports: [
     BrowserModule,
     CatalogModule,
+    CartModule,
     ServicesModule,
+    WidgetsModule,
     // rooting module à la fin
     AppRoutingModule
   ],

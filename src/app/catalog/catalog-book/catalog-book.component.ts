@@ -1,4 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from "@angular/router";
+import {Observable} from "rxjs";
+import {Book} from "../../core/model/book.model";
+import {CatalogService} from "../../core/services/catalog.service";
+import {switchMap} from "rxjs/operators";
+import {Title} from "@angular/platform-browser";
+import {tap} from "rxjs/operators/tap";
 
 @Component({
   selector: 'app-catalog-book',
@@ -7,9 +14,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CatalogBookComponent implements OnInit {
 
-  constructor() { }
+  book$: Observable<Book>;
+
+  constructor( private route: ActivatedRoute,
+               private catalogService: CatalogService,
+               private title: Title ) { }
 
   ngOnInit() {
+    this.book$ = this.route.params
+      .pipe(
+        switchMap(datas => this.catalogService.getBook(datas.id)),
+        tap(datas => this.title.setTitle('Livres: ' + datas.title))
+      );
+
   }
 
 }

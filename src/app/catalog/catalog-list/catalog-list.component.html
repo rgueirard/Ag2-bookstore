@@ -6,16 +6,19 @@
     <th>Auteur</th>
     <th>Note</th>
     <th>Prix</th>
+    <th></th>
   </tr>
   </thead>
   <!--<tbody *ngIf="books$ | async as books">-->
   <!--<tr *ngFor="let book of books">-->
   <tr *ngFor="let book of books$ | async">
     <td><img [src]="book.image"></td>
-    <td>{{book.title}}</td>
+    <td><a [routerLink]="['/catalog/book', book._id.$oid]">{{book.title}}</a></td>
     <td>{{book.author}}</td>
-    <td>{{book.rating || ''}}</td>
+    <td><app-rating [(value)]="book.rating"></app-rating></td>
+    <!--<input type="number" [(ngModel)]="book.rating">-->
     <td class="right">{{book.price | currency:'EUR'}}</td>
+    <td class="right"><button (click)="addToCart(book)"><img src="assets/img/cart-add.png"></button></td>
   </tr>
   </tbody>
 </table>

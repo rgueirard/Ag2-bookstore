@@ -1,0 +1,10 @@
+<nav>
+  <span><a [routerLink]="['/catalog/list']"
+           [routerLinkActive]="'active-link'">Catalogue</a></span>
+  <span><a [routerLink]="'/cart/content'"
+           [routerLinkActive]="'active-link'">Panier</a></span>
+  <span><a routerLink="/cart/order"
+           routerLinkActive="active-link">Commande</a></span>
+  <span><a [routerLink]="'/cart/order-reactive'"
+           [routerLinkActive]="'active-link'">Commande (Réactive)</a></span>
+</nav>
