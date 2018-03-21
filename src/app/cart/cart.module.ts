@@ -6,12 +6,15 @@ import { CartContentComponent } from './cart-content/cart-content.component';
 import { CartOrderComponent } from './cart-order/cart-order.component';
 import { CartOrderReactiveComponent } from './cart-order-reactive/cart-order-reactive.component';
 import { CartRootComponent } from './cart-root/cart-root.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {WidgetsModule} from "../core/widgets/widgets.module";
 
 @NgModule({
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
+    WidgetsModule,
     CartRoutingModule
   ],
   declarations: [CartContentComponent, CartOrderComponent, CartOrderReactiveComponent, CartRootComponent]

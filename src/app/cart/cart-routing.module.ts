@@ -6,7 +6,8 @@ import {CartContentComponent} from "./cart-content/cart-content.component";
 import {CartRootComponent} from "./cart-root/cart-root.component";
 
 const routes: Routes = [
-  { path: 'cart', component: CartRootComponent,
+  // { path: 'cart', component: CartRootComponent,
+  { path: '', component: CartRootComponent, // <= for lazyloading cart already exist
     children: [
       { path: 'content', component: CartContentComponent },
       { path: 'order', component: CartOrderComponent },

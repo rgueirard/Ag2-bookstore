@@ -1,0 +1,5 @@
+<p>
+  <img *ngIf="cartService.isEmpty()" src="assets/img/cart-empty.png">
+  <img *ngIf="!cartService.isEmpty()" src="assets/img/cart-loaded.png">
+  ({{cartService.totalQuantity()}} art.) {{cartService.totalAmount() |currency:'EUR'}}
+</p>

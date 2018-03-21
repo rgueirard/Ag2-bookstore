@@ -1,6 +1,10 @@
 
 <h2>Votre Panier</h2>
-<table>
+
+<ng-template #empty>
+  Le panier est vide
+</ng-template>
+<table *ngIf="!cartService.isEmpty(); else empty">
   <thead>
   <tr>
     <th></th>
@@ -13,14 +17,26 @@
   </thead>
   <tbody>
   <tr *ngFor="let row of cartService.rows">
+    <!--ngcontainer n'existera pas dans le dom donc pas de soucis-->
+    <ng-container *ngIf="row.book as book">
     <td><img [src]="row.book.image"></td>
-    <td>{{row.book.title}}</td>
-    <td>{{row.book.author}}</td>
-    <td>{{row.book.price}}</td>
+    <td>{{book.title}}</td>
+    <td>{{book.author}}</td>
+    <td>{{book.price}}</td>
     <td><input type="number" [(ngModel)]="row.quantity"></td>
-    <td></td>
+    <td class="right">{{row.amount() | currency:'EUR'}}</td>
+    </ng-container>
   </tr>
   </tbody>
+  <tfoot>
+  <tr>
+    <td colspan="3"></td>
+    <td>TOTAL</td>
+    <td>{{cartService.totalQuantity()}}</td>
+    <td>{{cartService.totalAmount() | currency:'EUR'}}</td>
+  </tr>
+  </tfoot>
 </table>
-
-
+<p>
+<app-order-button></app-order-button>
+</p>

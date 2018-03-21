@@ -1,3 +1,98 @@
-<p>
-  cart-order works!
-</p>
+<div class="debug">
+  <pre>{{data |json}}</pre>
+  <p><button (click)="log()">Log</button></p>
+</div>
+<form #formInfo="ngForm"
+      [class.submitted]="formInfo.submitted"
+      (ngSubmit)="formInfo.valid && save()">
+  <fieldset ngModelGroup="identity">
+    <legend>Identité</legend>
+    <app-field label="Prénom">
+      <input type="text" name="firstname"
+             [(ngModel)]="data.identity.firstname">
+    </app-field>
+    <app-field label="Nom*">
+      <input type="text" name="lastname"
+             [(ngModel)]="data.identity.lastname"
+             required  minlength='2'>
+      <!--#lastnameModel="ngModel"-->
+      <!--<span *ngIf="formInfo.controls['lastname']?.invalid">-->
+      <!--<span class="error"-->
+            <!--*ngIf="lastnameModel.invalid && !! lastnameModel.touched">-->
+        <!--Erreur :-->
+        <!--<span *ngIf="lastnameModel.hasError('required')">Ce champ est obligatoire</span>-->
+        <!--<span *ngIf="lastnameModel.hasError('minlength')">Il faut au minimum deux lettres</span>-->
+      <!--</span>-->
+    </app-field>
+    <app-field label="Email*">
+      <input type="email" name="email"
+             [(ngModel)]="data.identity.email"
+             domain="gmail.com">
+    </app-field>
+    <app-field label="Téléphone">
+      <input type="tel" name="phone"
+             [(ngModel)]="data.identity.phone">
+    </app-field>
+  </fieldset>
+
+  <fieldset [ngModelGroup]="'shipping'">
+    <legend>Adresse de livraison</legend>
+    <app-field label="N° de rue">
+      <input type="text" name="street"
+             [(ngModel)]="data.shipping.street">
+    </app-field>
+    <app-field label="Code postal*">
+      <input type="text" name="zipcode"
+             [(ngModel)]="data.shipping.zipcode"
+             required zipcode>
+    </app-field>
+    <app-field label="Ville*">
+      <input type="text" name="city"
+             [(ngModel)]="data.shipping.city"
+             required>
+    </app-field>
+    <app-field label="Pays">
+      <input type="text" name="country"
+             [(ngModel)]="data.shipping.country"
+             #countryModel="ngModel"
+             list="countries">
+      <datalist id="countries">
+        <option *ngFor="let country of countries$ | async">{{country}}</option>
+      </datalist>
+    </app-field>
+  </fieldset>
+
+  <p>
+    <label>
+      <input type="checkbox" name="hasBillingAddress" [(ngModel)]="data.hasBillingAddress">
+      Adresse de facturation différente
+    </label>
+  </p>
+
+  <fieldset ngModelGroup="billing" *ngIf="data.hasBillingAddress">
+    <legend>Adresse de facturation</legend>
+    <app-field label="N° de rue">
+      <input type="text" name="street"
+             [(ngModel)]="data.billing.street">
+    </app-field>
+    <app-field label="Code postal*">
+      <input type="text" name="zipcode"
+             [(ngModel)]="data.billing.zipcode"
+             required zipcode>
+    </app-field>
+    <app-field label="Ville*">
+      <input type="text" name="city"
+             [(ngModel)]="data.billing.city"
+             required>
+    </app-field>
+    <app-field label="Pays">
+      <input type="text" name="country"
+             [(ngModel)]="data.billing.country">
+    </app-field>
+  </fieldset>
+
+  <p>
+    <button type="submit" (keyup.enter)="submit()" [disabled]="formInfo.invalid && formInfo.submitted">Envoyer</button>
+  </p>
+</form>
+

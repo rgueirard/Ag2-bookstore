@@ -18,7 +18,7 @@
     <td><app-rating [(value)]="book.rating"></app-rating></td>
     <!--<input type="number" [(ngModel)]="book.rating">-->
     <td class="right">{{book.price | currency:'EUR'}}</td>
-    <td class="right"><button (click)="addToCart(book)"><img src="assets/img/cart-add.png"></button></td>
+    <td class="right"><app-buy-button [book]="book"></app-buy-button></td>
   </tr>
   </tbody>
 </table>

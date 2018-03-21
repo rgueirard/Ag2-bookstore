@@ -10,6 +10,7 @@
   <tr><th>Note</th><td><app-rating [(value)]="book.rating"></app-rating></td></tr>
   <tr><th>Nombre de Pages</th><td>{{book.pages}}</td></tr>
   <tr><th>Description</th><td [innerHtml]="book.description"></td></tr>
-  <tr><th>Votes</th><td>{{book.votes}}</td></tr>
-  <tr><th>ISBN10</th><td>{{book.isbn10}}</td></tr>
+  <tr><th></th><td><app-buy-button [book]="book"></app-buy-button></td></tr>
+  <!--<tr><th>Votes</th><td>{{book.votes}}</td></tr>-->
+  <!--<tr><th>ISBN10</th><td>{{book.isbn10}}</td></tr>-->
 </table>

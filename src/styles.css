@@ -1,3 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+
+input.ng-invalid.ng-touched,
+form.submitted input.ng-invalid {
+  border: 2px solid red;
+}
+
+.error {
+  color: red;
+}
 
 .bar-chart {
   background-color: darkcyan;
@@ -6,7 +16,7 @@
 
 tr.big td {
   font-weight: bold;
-  background-color: #d2d2ff;
+  background-color: lightyellow;
 }
 
 

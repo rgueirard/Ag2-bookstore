@@ -13,6 +13,22 @@ export class CartService {
     this.rows.push(new CartRow(book, quantity));
   }
 
+  remove(row: CartRow) {
+    this.rows = this.rows.filter(r => r!==row);
+  }
+
+  totalAmount(): number {
+    return this.rows
+      .map(row => row.amount())
+      .reduce((total, value) => total+value, 0);
+  }
+
+  totalQuantity(): number {
+    return this.rows
+      .map(row => row.quantity)
+      .reduce((total, value) => total+value, 0);
+  }
+
   isEmpty(): boolean {
     return this.rows.length === 0;
   }
