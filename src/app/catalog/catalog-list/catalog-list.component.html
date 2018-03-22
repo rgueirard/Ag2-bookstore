@@ -11,14 +11,15 @@
   </thead>
   <!--<tbody *ngIf="books$ | async as books">-->
   <!--<tr *ngFor="let book of books">-->
-  <tr *ngFor="let book of books$ | async">
-    <td><img [src]="book.image"></td>
-    <td><a [routerLink]="['/catalog/book', book._id.$oid]">{{book.title}}</a></td>
-    <td>{{book.author}}</td>
-    <td><app-rating [(value)]="book.rating"></app-rating></td>
+  <tr *ngFor="let book of books$ | async"
+      class="catalog-row">
+    <td class="catalog-image"><img [src]="book.image"></td>
+    <td class="catalog-title"><a [routerLink]="['/catalog/book', book._id.$oid]">{{book.title}}</a></td>
+    <td class="catalog-author">{{book.author}}</td>
+    <td class="right catalog-price">{{book.price | currency:'EUR'}}</td>
+    <td class="catalog-rating"><app-rating [(value)]="book.rating"></app-rating></td>
     <!--<input type="number" [(ngModel)]="book.rating">-->
-    <td class="right">{{book.price | currency:'EUR'}}</td>
-    <td class="right"><app-buy-button [book]="book"></app-buy-button></td>
+    <td class="catalog-button"><app-buy-button [book]="book"></app-buy-button></td>
   </tr>
   </tbody>
 </table>

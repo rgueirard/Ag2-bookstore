@@ -1,11 +1,15 @@
-import { browser, by, element } from 'protractor';
+import { browser, By, element } from 'protractor';
 
 export class AppPage {
   navigateTo() {
     return browser.get('/');
   }
 
-  getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+  getTitleText() {
+    return element(By.css('app-root h1')).getText();
+  }
+
+  clickOnMenu(linkText: string) {
+    return element(By.tagName('app-menu')).element(By.linkText(linkText)).click();
   }
 }

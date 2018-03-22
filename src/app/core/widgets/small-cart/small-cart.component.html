@@ -1,5 +1,6 @@
 <p>
   <img *ngIf="cartService.isEmpty()" src="assets/img/cart-empty.png">
   <img *ngIf="!cartService.isEmpty()" src="assets/img/cart-loaded.png">
-  ({{cartService.totalQuantity()}} art.) {{cartService.totalAmount() |currency:'EUR'}}
+  <span class="count">({{cartService.totalQuantity()}} art.)</span>
+  <span class="total">{{cartService.totalAmount() |currency:'EUR'}}</span>
 </p>

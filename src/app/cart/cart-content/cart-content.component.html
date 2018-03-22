@@ -16,15 +16,15 @@
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let row of cartService.rows">
+  <tr *ngFor="let row of cartService.rows" class="cart-row">
     <!--ngcontainer n'existera pas dans le dom donc pas de soucis-->
     <ng-container *ngIf="row.book as book">
-    <td><img [src]="row.book.image"></td>
-    <td>{{book.title}}</td>
-    <td>{{book.author}}</td>
-    <td>{{book.price}}</td>
-    <td><input type="number" [(ngModel)]="row.quantity"></td>
-    <td class="right">{{row.amount() | currency:'EUR'}}</td>
+    <td class="cart-image"><img [src]="row.book.image"></td>
+    <td class="cart-title">{{book.title}}</td>
+    <td class="cart-author">{{book.author}}</td>
+    <td class="cart-price">{{book.price}}</td>
+    <td class="cart-quantity"><input type="number" [(ngModel)]="row.quantity"></td>
+    <td class="right cart-amount">{{row.amount() | currency:'EUR'}}</td>
     </ng-container>
   </tr>
   </tbody>
